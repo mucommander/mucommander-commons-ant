@@ -18,17 +18,20 @@
 
 package com.mucommander.commons.ant.jnlp;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 /**
  * @author Nicolas Rinaudo
  */
 public class ApplicationDescElement {
-    private String mainClass;
-    private Vector<ArgumentElement> arguments;
+    private       String                mainClass;
+    private final List<ArgumentElement> arguments;
 
-    public ApplicationDescElement() {arguments = new Vector<ArgumentElement>();}
+    public ApplicationDescElement() {
+        arguments = new ArrayList<ArgumentElement>();
+    }
 
     public void setMain(String s) {mainClass = s;}
     public String getMain() {return mainClass;}

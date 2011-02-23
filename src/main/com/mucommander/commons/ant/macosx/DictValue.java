@@ -21,17 +21,20 @@ package com.mucommander.commons.ant.macosx;
 import com.mucommander.commons.ant.util.XmlWriter;
 import org.xml.sax.SAXException;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 /**
- *
+ * @author Nicolas Rinaudo
  */
 public class DictValue implements InfoElement {
     private static final String ELEMENT_DICT = "dict";
-    private Vector<NamedInfoElement> keys;
+    private final List<NamedInfoElement> keys;
 
-    public DictValue() {keys = new Vector<NamedInfoElement>();}
+    public DictValue() {
+        keys = new ArrayList<NamedInfoElement>();
+    }
 
     public ArrayKey createArray() {
         ArrayKey value;

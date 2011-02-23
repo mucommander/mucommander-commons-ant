@@ -24,9 +24,9 @@ import org.xml.sax.SAXException;
 public class DataValue implements InfoElement {
     private static final String DATA_ELEMENT = "data";
 
-    private StringBuffer data;
+    private final StringBuilder data;
 
-    public DataValue() {data = new StringBuffer();}
+    public DataValue() {data = new StringBuilder();}
 
     public void addText(String txt) {data.append(txt);}
 

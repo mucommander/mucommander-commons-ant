@@ -18,45 +18,81 @@
 
 package com.mucommander.commons.ant.jnlp;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 /**
  * @author Nicolas Rinaudo
  */
 public class ResourcesElement {
-    private String                   os;
-    private String                   arch;
-    private String                   locale;
-    private Vector<J2seElement>      j2ses;
-    private Vector<JarElement>       jars;
-    private Vector<NativeLibElement> nativeLibs;
-    private Vector<ExtensionElement> extensions;
-    private Vector<PropertyElement>  properties;
-    private Vector<PackageElement>   packages;
+    private       String                 os;
+    private       String                 arch;
+    private       String                 locale;
+    private final List<J2seElement>      j2ses;
+    private final List<JarElement>       jars;
+    private final List<NativeLibElement> nativeLibs;
+    private final List<ExtensionElement> extensions;
+    private final List<PropertyElement>  properties;
+    private final List<PackageElement>   packages;
 
     public ResourcesElement() {
-        j2ses      = new Vector<J2seElement>();
-        jars       = new Vector<JarElement>();
-        nativeLibs = new Vector<NativeLibElement>();
-        extensions = new Vector<ExtensionElement>();
-        properties = new Vector<PropertyElement>();
-        packages   = new Vector<PackageElement>();
+        j2ses      = new ArrayList<J2seElement>();
+        jars       = new ArrayList<JarElement>();
+        nativeLibs = new ArrayList<NativeLibElement>();
+        extensions = new ArrayList<ExtensionElement>();
+        properties = new ArrayList<PropertyElement>();
+        packages   = new ArrayList<PackageElement>();
     }
 
-    public String getOs() {return os;}
-    public String getArch() {return arch;}
-    public String getLocale() {return locale;}
-    public Iterator<J2seElement> j2ses() {return j2ses.iterator();}
-    public Iterator<JarElement> jars() {return jars.iterator();}
-    public Iterator<NativeLibElement> nativeLibs() {return nativeLibs.iterator();}
-    public Iterator<ExtensionElement> extensions() {return extensions.iterator();}
-    public Iterator<PropertyElement> properties() {return properties.iterator();}
-    public Iterator<PackageElement> packages() {return packages.iterator();}
+    public String getOs() {
+        return os;
+    }
 
-    public void setOs(String s) {os = s;}
-    public void setArch(String s) {arch = s;}
-    public void setLocale(String s) {locale = s;}
+    public String getArch() {
+        return arch;
+    }
+
+    public String getLocale() {
+        return locale;
+    }
+
+    public Iterator<J2seElement> j2ses() {
+        return j2ses.iterator();
+    }
+
+    public Iterator<JarElement> jars() {
+        return jars.iterator();
+    }
+
+    public Iterator<NativeLibElement> nativeLibs() {
+        return nativeLibs.iterator();
+    }
+
+    public Iterator<ExtensionElement> extensions() {
+        return extensions.iterator();
+    }
+
+    public Iterator<PropertyElement> properties() {
+        return properties.iterator();
+    }
+
+    public Iterator<PackageElement> packages() {
+        return packages.iterator();
+    }
+
+    public void setOs(String s) {
+        os = s;
+    }
+
+    public void setArch(String s) {
+        arch = s;
+    }
+
+    public void setLocale(String s) {
+        locale = s;
+    }
+
     public J2seElement createJ2se() {
         J2seElement buffer;
 

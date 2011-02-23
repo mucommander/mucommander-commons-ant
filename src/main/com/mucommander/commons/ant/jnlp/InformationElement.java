@@ -18,38 +18,74 @@
 
 package com.mucommander.commons.ant.jnlp;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 /**
  * @author Nicolas Rinaudo
  */
 public class InformationElement {
-    private String                     locale;
-    private String                     title;
-    private String                     vendor;
-    private String                     homepage;
-    private Vector<DescriptionElement> descriptions;
-    private Vector<IconElement>        icons;
-    private boolean                    offlineAllowed;
+    private       String                   locale;
+    private       String                   title;
+    private       String                   vendor;
+    private       String                   homepage;
+    private final List<DescriptionElement> descriptions;
+    private final List<IconElement>        icons;
+    private       boolean                  offlineAllowed;
 
     public InformationElement() {
-        icons        = new Vector<IconElement>();
-        descriptions = new Vector<DescriptionElement>();
+        icons        = new ArrayList<IconElement>();
+        descriptions = new ArrayList<DescriptionElement>();
     }
 
-    public void setOffline(boolean b) {offlineAllowed = b;}
-    public boolean isOffline() {return offlineAllowed;}
-    public void setTitle(String s) {title = s;}
-    public String getTitle() {return title;}
-    public String getVendor() {return vendor;}
-    public void setVendor(String s) {vendor = s;}
-    public void setLocale(String s) {locale = s;}
-    public String getLocale() {return locale;}
-    public void setHomepage(String s) {homepage = s;}
-    public String getHomepage() {return homepage;}
-    public Iterator<DescriptionElement> descriptions() {return descriptions.iterator();}
-    public Iterator<IconElement> icons() {return icons.iterator();}
+    public void setOffline(boolean b) {
+        offlineAllowed = b;
+    }
+
+    public boolean isOffline() {
+        return offlineAllowed;
+    }
+
+    public void setTitle(String s) {
+        title = s;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(String s) {
+        vendor = s;
+    }
+
+    public void setLocale(String s) {
+        locale = s;
+    }
+
+    public String getLocale() {
+        return locale;
+    }
+
+    public void setHomepage(String s) {
+        homepage = s;
+    }
+
+    public String getHomepage() {
+        return homepage;
+    }
+
+    public Iterator<DescriptionElement> descriptions() {
+        return descriptions.iterator();
+    }
+
+    public Iterator<IconElement> icons() {
+        return icons.iterator();
+    }
 
     public DescriptionElement createDescription() {
         DescriptionElement buffer;

@@ -18,21 +18,24 @@
 
 package com.mucommander.commons.ant.jnlp;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 /**
  * @author Nicolas Rinaudo
  */
 public class AppletDescElement {
-    private String                  documentBase;
-    private String                  mainClass;
-    private String                  name;
-    private int                     width;
-    private int                     height;
-    private Vector<PropertyElement> params;
+    private       String                documentBase;
+    private       String                mainClass;
+    private       String                name;
+    private       int                   width;
+    private       int                   height;
+    private final List<PropertyElement> params;
 
-    public AppletDescElement() {params = new Vector<PropertyElement>();}
+    public AppletDescElement() {
+        params = new ArrayList<PropertyElement>();
+    }
 
     public String getDocumentBase() {return documentBase;}
     public String getMain() {return mainClass;}

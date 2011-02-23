@@ -29,11 +29,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 /**
- * 
+ *
  * @author Nicolas Rinaudo
  */
 public class JnlpTask extends Task {
@@ -41,7 +42,6 @@ public class JnlpTask extends Task {
     // -----------------------------------------------------------------------------------------------------------------
     /** Default value of the {@link #spec} field. */
     private static final String     DEFAULT_SPEC     = "1.0+";
-    private static final Attributes EMPTY_ATTRIBUTES = new AttributesImpl(); 
 
 
 
@@ -98,11 +98,9 @@ public class JnlpTask extends Task {
     private static final String KIND_ONE_LINE            = "one-line";
     private static final String KIND_SHORT               = "short";
     private static final String KIND_TOOLTIP             = "tooltip";
-    private static final String KIND_DEFAULT             = "default";
     private static final String KIND_SELECTED            = "selected";
     private static final String KIND_DISABLED            = "disabled";
     private static final String KIND_ROLLOVER            = "rollover";
-    private static final String DOWNLOAD_EAGER           = "eager";
     private static final String DOWNLOAD_LAZY            = "lazy";
 
 
@@ -110,31 +108,31 @@ public class JnlpTask extends Task {
     // - Instance variables --------------------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------------------------------------
     /** Where to store the JNLP file. */
-    private File                       output;
+    private File                     output;
     /** Version of the JNLP specifications used by the generated file. */
-    private String                     spec;
+    private String                   spec;
     /** Version of the bundle described by the output file. */
-    private String                     version;
+    private String                   version;
     /** Root URL for all relative URLs used in the JNLP file. */
-    private String                     codeBase;
+    private String                   codeBase;
     /** URL of the JNLP file. */
-    private String                     href;
+    private String                   href;
     /** Contains the bundle description. */
-    private Vector<InformationElement> informations;
+    private List<InformationElement> informations;
     /** Whether or not the bundle needs full permissions on the local machine. */
-    private boolean                    allPermissions;
+    private boolean                  allPermissions;
     /** Whether or not the bundle needs the permissions defined for a J2EE client. */
-    private boolean                    j2eePermissions;
+    private boolean                  j2eePermissions;
     /** resources defined for the bundle. */
-    private Vector<ResourcesElement>   resources;
+    private List<ResourcesElement>   resources;
     /** Whether or not the bundle is a component. */
-    private boolean                    isComponent;
+    private boolean                  isComponent;
     /** Contains the description of application bundles. */
-    private ApplicationDescElement     applicationDesc;
+    private ApplicationDescElement   applicationDesc;
     /** Contains the description of applet bundles. */
-    private AppletDescElement          appletDesc;
+    private AppletDescElement        appletDesc;
     /** Contains the description of installer bundles. */
-    private InstallerDescElement       installerDesc;
+    private InstallerDescElement     installerDesc;
 
 
 
@@ -144,8 +142,8 @@ public class JnlpTask extends Task {
      * Initialises the JNLP task.
      */
     public void init() {
-        resources       = new Vector<ResourcesElement>();
-        informations    = new Vector<InformationElement>();
+        resources       = new ArrayList<ResourcesElement>();
+        informations    = new ArrayList<InformationElement>();
         output          = null;
         spec            = DEFAULT_SPEC;
         version         = null;
@@ -163,7 +161,9 @@ public class JnlpTask extends Task {
 
     // - Ant interaction -----------------------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------------------------------------
-    public void setOut(File f) {output = f;}
+    public void setOut(File f) {
+        output = f;
+    }
 
     public ResourcesElement createResources() {
         ResourcesElement buffer;
@@ -202,17 +202,29 @@ public class JnlpTask extends Task {
         return installerDesc = new InstallerDescElement();
     }
 
-    public void setSpec(String s) {spec = s;}
+    public void setSpec(String s) {
+        spec = s;
+    }
 
-    public void setVersion(String s) {version = s;}
+    public void setVersion(String s) {
+        version = s;
+    }
 
-    public void setCodeBase(String s) {codeBase = s;}
+    public void setCodeBase(String s) {
+        codeBase = s;
+    }
 
-    public void setHref(String s) {href = s;}
+    public void setHref(String s) {
+        href = s;
+    }
 
-    public void setAllPermissions(boolean b) {allPermissions = b;}
+    public void setAllPermissions(boolean b) {
+        allPermissions = b;
+    }
 
-    public void setJ2EEPermissions(boolean b) {j2eePermissions = b;}
+    public void setJ2EEPermissions(boolean b) {
+        j2eePermissions = b;
+    }
 
     public InformationElement createInformation() throws BuildException {
         InformationElement buffer;
@@ -253,15 +265,15 @@ public class JnlpTask extends Task {
         attr = new AttributesImpl();
         if((kind = description.getKind()) != DescriptionElement.KIND_UNSPECIFIED) {
             switch(kind) {
-            case DescriptionElement.KIND_ONE_LINE:
-                addAttribute(attr, ATTR_KIND, KIND_ONE_LINE);
-                break;
-            case DescriptionElement.KIND_SHORT:
-                addAttribute(attr, ATTR_KIND, KIND_SHORT);
-                break;
-            case DescriptionElement.KIND_TOOLTIP:
-                addAttribute(attr, ATTR_KIND, KIND_TOOLTIP);
-                break;
+                case DescriptionElement.KIND_ONE_LINE:
+                    addAttribute(attr, ATTR_KIND, KIND_ONE_LINE);
+                    break;
+                case DescriptionElement.KIND_SHORT:
+                    addAttribute(attr, ATTR_KIND, KIND_SHORT);
+                    break;
+                case DescriptionElement.KIND_TOOLTIP:
+                    addAttribute(attr, ATTR_KIND, KIND_TOOLTIP);
+                    break;
             }
         }
         out.startElement(ELEMENT_DESCRIPTION, attr);
@@ -277,15 +289,15 @@ public class JnlpTask extends Task {
 
         attr = new AttributesImpl();
         switch(icon.getKind()) {
-        case IconElement.KIND_SELECTED:
-            addAttribute(attr, ATTR_KIND, KIND_SELECTED);
-            break;
-        case IconElement.KIND_ROLLOVER:
-            addAttribute(attr, ATTR_KIND, KIND_ROLLOVER);
-            break;
-        case IconElement.KIND_DISABLED:
-            addAttribute(attr, ATTR_KIND, KIND_DISABLED);
-            break;
+            case IconElement.KIND_SELECTED:
+                addAttribute(attr, ATTR_KIND, KIND_SELECTED);
+                break;
+            case IconElement.KIND_ROLLOVER:
+                addAttribute(attr, ATTR_KIND, KIND_ROLLOVER);
+                break;
+            case IconElement.KIND_DISABLED:
+                addAttribute(attr, ATTR_KIND, KIND_DISABLED);
+                break;
         }
 
         if(icon.getWidth() != 0)
@@ -642,15 +654,15 @@ public class JnlpTask extends Task {
             if(applicationDesc != null)
                 writeApplicationDesc(out, applicationDesc);
 
-            // Applet description.
+                // Applet description.
             else if(appletDesc != null)
                 writeAppletDesc(out, appletDesc);
 
-            // Component description.
+                // Component description.
             else if(isComponent)
                 out.addElement(ELEMENT_COMPONENT_DESC);
 
-            // Installer description.
+                // Installer description.
             else
                 writeInstallerDesc(out, installerDesc);
 

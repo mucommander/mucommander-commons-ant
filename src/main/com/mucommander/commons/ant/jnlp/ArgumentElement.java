@@ -22,9 +22,9 @@ package com.mucommander.commons.ant.jnlp;
  * @author Nicolas Rinaudo
  */
 public class ArgumentElement {
-    private StringBuffer text;
+    private final StringBuilder text;
 
-    public ArgumentElement() {text = new StringBuffer();}
+    public ArgumentElement() {text = new StringBuilder();}
 
     public void addText(String s) {text.append(s);}
     public String getText() {return text.toString().trim();}

@@ -21,16 +21,17 @@ package com.mucommander.commons.ant.macosx;
 import com.mucommander.commons.ant.util.XmlWriter;
 import org.xml.sax.SAXException;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  */
 public class ArrayValue implements InfoElement {
     public static final String ELEMENT_ARRAY     = "array";
-    private Vector<InfoElement> keys;
+    private final List<InfoElement> keys;
 
-    public ArrayValue() {keys = new Vector<InfoElement>();}
+    public ArrayValue() {keys = new ArrayList<InfoElement>();}
 
     public BooleanValue createBoolean() {
         BooleanValue value;

@@ -18,28 +18,53 @@
 
 package com.mucommander.commons.ant.jnlp;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 /**
  * @author Nicolas Rinaudo
  */
 public class ExtensionElement {
-    private String version;
-    private String name;
-    private String href;
-    private Vector<ExtDownloadElement> downloads;
+    private       String                   version;
+    private       String                   name;
+    private       String                   href;
+    private final List<ExtDownloadElement> downloads;
 
-    public ExtensionElement() {downloads = new Vector<ExtDownloadElement>();}
+    public ExtensionElement() {downloads = new ArrayList<ExtDownloadElement>();}
 
-    public String getVersion() {return version;}
-    public String getName() {return name;}
-    public String getHref() {return href;}
-    public boolean hasDownloads() {return !downloads.isEmpty();}
-    public Iterator<ExtDownloadElement> downloads() {return downloads.iterator();}
-    public void setVersion(String s) {version = s;}
-    public void setName(String s) {name = s;}
-    public void setHref(String s) {href = s;}
+    public String getVersion() {
+        return version;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getHref() {
+        return href;
+    }
+
+    public boolean hasDownloads() {
+        return !downloads.isEmpty();
+    }
+
+    public Iterator<ExtDownloadElement> downloads() {
+        return downloads.iterator();
+    }
+
+    public void setVersion(String s) {
+        version = s;
+    }
+
+    public void setName(String s) {
+        name = s;
+    }
+
+    public void setHref(String s) {
+        href = s;
+    }
+
     public ExtDownloadElement createExtDownload() {
         ExtDownloadElement buffer;
 
